@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./assets/styles/style.css" />
+</head>
+
+<!-- -----if user is not logged in then he/she cannot see the upload documents page -->
+<script>
+  let User = JSON.parse(localStorage.getItem("currentUser"));
+  if (User == null) {
+    window.location = "./login.html";
+  }
+</script>
+
+<body>
+  <div class="header upload-header">
+    <ul>
+      <li><a href="./chat.html">Group Chat</a></li>
+      <li><a href="./usersList.html">Manage Users</a></li>
+      <li><a href="#">Manage Documents</a></li>
+      <li><a class="logout">Logout</a></li>
+    </ul>
+  </div>
+  <h2 class="users-heading">My Uploads</h2>
+  <div class="uploads">
+    <table class="documents-container tables">
+      <tr>
+        <td>Label</td>
+        <td>File Name</td>
+        <td>Action</td>
+      </tr>
+    </table>
+  </div>
+  <h2 class="users-heading">Shared Uploads</h2>
+  <!------------ shared-uploads --------------- -->
+  <table class="tables shared-uploads">
+    <tr>
+      <td>Label</td>
+      <td>File Name</td>
+      <td>Shared by</td>
+    </tr>
+    <tr>
+      <td>Sales Team Attended Sep 2014</td>
+      <td>Sale-Attended-sep2014.xls</td>
+      <td>jatin@gmail.com</td>
+    </tr>
+    <tr>
+      <td>Office Rules</td>
+      <td>OfficeRules.doc</td>
+      <td>hr@office.com</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><a class="btn uploadDocBtn" href="#">+ Add Upload</a></td>
+    </tr>
+  </table>
+  <!-- --------------- upload-modal --------------- -->
+  <div class="upload-modal hide-upload-modal">
+    <ul class="upload-modal-header">
+      <li></li>
+      <li>Upload</li>
+      <li class="close">X</li>
+    </ul>
+    <div class="upload-features">
+      <ul class="list file-input">
+        <li>File Description</li>
+        <li>
+          <input type="text" class="file-desc" placeholder="Sample File" />
+        </li>
+      </ul>
+      <ul class="upload-file">
+        <li>File Upload</li>
+        <li><input type="file" name="" id="file" /></li>
+      </ul>
+      <ul class="upload-btns">
+        <li><a href="#" class="btn upload-btn">Upload Now</a></li>
+        <li><a href="#" class="btn cancel-upload-btn">cancel</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--------------- edit modal------------  -->
+  <div class="edit-modal upload-modal hide-upload-modal">
+    <ul class="edit-modal-header upload-modal-header">
+      <li></li>
+      <li>Edit</li>
+      <li class="close">X</li>
+    </ul>
+    <div class="upload-features">
+      <ul>
+        <li>File Description </li>
+        <li><input type="text" class="edit-doc-label" /></li>
+      </ul>
+      <ul class="edit-doc-btns upload-btns">
+        <li><a href="#" class="btn save-doc-btn">Save</a></li>
+        <li><a href="#" class="btn cancel-doc-btn">cancel</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- ---------- Delete Modal --------------- -->
+  <div class="delete-modal hide-upload-modal">
+    <ul class="delete-modal-header">
+      <li></li>
+      <li>Confirm User Deletion</li>
+      <li class="close">X</li>
+    </ul>
+    <div class="delete-modal-body">
+      <div>
+        <img src="./assets/images/question-mark.png" alt="img">
+        <p>Are Your Sure ?</p>
+      </div>
+      <div class="delete-modal-buttons">
+        <a href="#" class="btn confirm-delete-document">Ok</a>
+        <a href="#" class="btn cancel-delete">Cancel</a>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./assets/scripts/app.js"></script>
+
+</html>
